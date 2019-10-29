@@ -108,7 +108,7 @@ class IssueScreen:
                          "IssueLevel":self.IssueLevel.get()}
         df = pd.DataFrame([Issuewrite])
         df.to_csv('IssueTime.csv', mode='a', index=False,header=0)
-
+    
 
 
 
