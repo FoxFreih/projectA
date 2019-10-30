@@ -26,14 +26,13 @@ def fillcombobox():
 
 
 
-
 x = 10
 y = 10
 class IssueRequest:
+
     def __init__(self):
         global lst1
         self.app = tk.Tk()
-
         self.app.geometry('320x250')
         self.app.title("customer")
 
@@ -58,6 +57,7 @@ class IssueRequest:
         tk.Label(self.app,text = "place:").grid(column=0, row=3,padx=x,pady=y)
         tk.Entry(self.app,textvariable=self.place).grid(column=1,row=3,padx=x,pady=y)
         tk.Button(self.app,text="send",width=15,command=self.click).grid(column=0,row=4,padx=x+5,pady=y+5)
+        self.app.mainloop()
 
     def callback(self,events):
         import pandas as pd
@@ -84,6 +84,10 @@ class IssueRequest:
         df.to_csv('customerissue.csv', mode='a', index=False, header=0)
 
         self.app.destroy()
-        Funcfile.AdminScreen()
+        #Funcfile.AdminScreen()
+
+if __name__=='__main__':
+    IssueRequest()
+#issue.__init__()
 
 

@@ -98,7 +98,7 @@ class FaultScreen:
         compo1.grid(column=1, row=4, padx=x, pady=y)
         tk.Button(self.app, text="send", width=15, command=self.click).grid(column=0, row=5, padx=x + 5, pady=y + 5)
 
-        #self.app.mainloop()
+        self.app.mainloop()
 
     def click(self):
         Faultwrite = {"product": self.product.get(),
