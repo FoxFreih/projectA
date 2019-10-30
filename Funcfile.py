@@ -4,6 +4,7 @@ from tkinter import *
 from tkinter import messagebox
 import pandas as pd
 import time
+import customer
 
 
 def cal_travel_time(x1, y1, x2, y2):
@@ -15,22 +16,15 @@ def cal_travel_time(x1, y1, x2, y2):
     time = distance / speed
     return time
 
-
-def asd():
-    pass
-
-
 def Shibuts():
     messagebox.showinfo(title="ok", message="shibuts is ok")
     print("Hello")
 
-
-def addFault():
-    pass
-
-
 def addProduct():
     pass
+
+
+
 
 
 def load_admin_screen():
@@ -41,23 +35,23 @@ class AdminScreen(object):
 
     def __init__(self):
         self.root = Tk()
-        self.root.geometry("500x250")
+        self.root.geometry("600x250")
         self.root.title("Admin")
         self.root.configure(bg='white')
         shibuts = Button(self.root, text="Shibuts", font=('Times New Roman', 14), bg='red', fg='white', padx=10,
                          command=Shibuts)
         shibuts.place(relx=0.5, rely=0.75, anchor=CENTER)
-        AddIssue = Button(self.root, text="AddIssue", font=('Times New Roman', 14), bg='dark green', fg='white',
+        AddIssue = Button(self.root, text="AddIssueRequest", font=('Times New Roman', 14), bg='dark green', fg='white',
                           padx=10,
-                          command=self.addIssue)
+                          command=self.addIssueRequest)
         AddIssue.place(relx=0.5, rely=0.45, anchor=CENTER)
         AddFault = Button(self.root, text="AddFault", font=('Times New Roman', 14), bg='blue4', fg='white', padx=10,
-                          command=addFault)
+                          command=self.addFault)
         AddFault.place(relx=0.25, rely=0.45, anchor=CENTER)
         AddProduct = Button(self.root, text="AddProduct", font=('Times New Roman', 14), bg='goldenrod', fg='white',
                             padx=10,
                             command=addProduct)
-        AddProduct.place(relx=0.75, rely=0.45, anchor=CENTER)
+        AddProduct.place(relx=0.76, rely=0.45, anchor=CENTER)
 
     def mainloop(self):
         self.root.mainloop()
@@ -68,19 +62,24 @@ class AdminScreen(object):
     def click(self):
         pass
 
-    def addIssue(self):
+    def addIssueRequest(self):
+        self.root.destroy()
+        customer.IssueRequest()
+
+
+    def addFault(self):
         self.root.destroy()
         #app.mainloop()
-        issue  = IssueScreen()
+        fault  = FaultScreen()
 
 
-class IssueScreen:
+class FaultScreen:
     def __init__(self):
         self.app = tk.Tk()
         x = 10
         y = 10
         self.app.geometry('320x250')
-        self.app.title("AddIssue")
+        self.app.title("AddFault")
         self.product = tk.StringVar()
         self.discription = tk.StringVar()
         self.time = tk.StringVar()
@@ -102,12 +101,14 @@ class IssueScreen:
         #self.app.mainloop()
 
     def click(self):
-        Issuewrite = {"product": self.product.get(),
+        Faultwrite = {"product": self.product.get(),
                          "discription": self.discription.get(),
                          "time": self.time.get(),
                          "IssueLevel":self.IssueLevel.get()}
-        df = pd.DataFrame([Issuewrite])
+        df = pd.DataFrame([Faultwrite])
         df.to_csv('IssueTime.csv', mode='a', index=False,header=0)
+        self.app.destroy()
+        AdminScreen()
     
 
 
@@ -117,3 +118,6 @@ def load_tech_screen():
     root1.geometry("500x500")
     root1.title("tech")
     root1.mainloop()
+
+
+
