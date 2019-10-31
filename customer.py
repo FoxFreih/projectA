@@ -85,8 +85,9 @@ class IssueRequest:
 
         self.app.destroy()
         #Funcfile.AdminScreen()
-
+print("hi")
 if __name__=='__main__':
+    #print("name : hi")
     IssueRequest()
 #issue.__init__()
 
