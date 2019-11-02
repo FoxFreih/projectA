@@ -81,11 +81,10 @@ class LogIn(Page):
         userpassword = self.userpassword.get()
         if username == "*":
             if userpassword == "":
-                # Funcfile.IssueScreen()u
                 screen = Funcfile.AdminScreen(self.app,self.root)
                 screen.start()
                 screen.show()
-                # screen.mainloop()
+
 
             else:
                 messagebox.showinfo(title="hello admin", message="Login failed: Invalid password")

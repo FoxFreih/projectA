@@ -66,6 +66,9 @@ class AdminScreen(Login.Page):
 
     def addFault(self):
         fault  = FaultScreen(self.app,self.root,self)
+        print(type(self))
+        print(type(self.root))
+        print(type(self.app))
         fault.start()
         fault.show()
 
@@ -76,7 +79,7 @@ class FaultScreen(Login.Page):
         y = 10
         Login.Page.__init__(self, app, root, *args, **kwargs)
         self.height = 250
-        self.width = 320
+        self.width = 350
         self.title = "AddFault"
         self.parent = parent
         self.product = tk.StringVar()

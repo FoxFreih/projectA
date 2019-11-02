@@ -33,7 +33,7 @@ class IssueRequest(Login.Page):
     def __init__(self, app, root,parent, *args, **kwargs):
         Login.Page.__init__(self, app, root, *args, **kwargs)
         self.height = 250
-        self.width = 320
+        self.width = 350
         self.title = "Customer"
         self.parent = parent
         global lst1
@@ -56,7 +56,7 @@ class IssueRequest(Login.Page):
 
 
         tk.Label(self,text = "place:").grid(column=0, row=3,padx=x,pady=y)
-        tk.Entry(self,textvariable=self.place).grid(column=1,row=3,padx=x,pady=y)
+        tk.Entry(self,textvariable=self.my_place).grid(column=1,row=3,padx=x,pady=y)
         tk.Button(self,text="send",width=15,command=self.click).grid(column=0,row=4,padx=x+5,pady=y+5)
 
     def callback(self,events):
@@ -88,7 +88,6 @@ class IssueRequest(Login.Page):
             self.parent.show()
         else:
             self.root.destroy()
-        #Funcfile.AdminScreen()
 class App(tk.Frame):
     def __init__(self, root, *args, **kwargs):
         tk.Frame.__init__(self,root, *args, **kwargs)
