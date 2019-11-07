@@ -1,11 +1,8 @@
+import time
 import tkinter as tk
 from tkinter import ttk
-from tkinter import *
 import pandas as pd
-import time
-import Funcfile
-import Login
-from pandas import DataFrame
+import design
 
 # reading single line from csv file
 def readcsv(num):
@@ -24,42 +21,40 @@ def fillcombobox():
     return lst
 
 
-
-
 x = 10
 y = 10
-class IssueRequest(Login.Page):
 
-    def __init__(self, app, root,parent, *args, **kwargs):
-        Login.Page.__init__(self, app, root, *args, **kwargs)
+#print(type(LOGIN.Page))
+class IssueRequest(design.Page):
+
+
+    def __init__(self, app, root, parent, *args, **kwargs):
+        design.Page.__init__(self, app, root, *args, **kwargs)
         self.height = 250
         self.width = 350
         self.title = "Customer"
         self.parent = parent
         global lst1
-        self.name=tk.StringVar()
-        self.product=tk.StringVar()
-        self.issue=tk.StringVar()
-        self.my_place=tk.StringVar()
+        self.name = tk.StringVar()
+        self.product = tk.StringVar()
+        self.issue = tk.StringVar()
+        self.my_place = tk.StringVar()
 
-        tk.Label(self,text = "customer name:").grid(column=0,row=0,padx=x,pady=y)
-        tk.Entry(self,textvariable=self.name).grid(column=1,row=0,padx=x,pady=y)
+        tk.Label(self, text="customer name:").grid(column=0, row=0, padx=x, pady=y)
+        tk.Entry(self, textvariable=self.name).grid(column=1, row=0, padx=x, pady=y)
 
-
-
-        tk.Label(self,text = "product name:").grid(column=0, row=1,padx=x,pady=y)
-        lst=fillcombobox()
-        self.compo1=ttk.Combobox(self,textvariable=self.product,values=lst)
+        tk.Label(self, text="product name:").grid(column=0, row=1, padx=x, pady=y)
+        lst = fillcombobox()
+        self.compo1 = ttk.Combobox(self, textvariable=self.product, values=lst)
         self.compo1.current(0)
         self.compo1.bind("<<ComboboxSelected>>", self.callback)
-        self.compo1.grid(column=1,row=1,padx=x,pady=y)
+        self.compo1.grid(column=1, row=1, padx=x, pady=y)
 
+        tk.Label(self, text="place:").grid(column=0, row=3, padx=x, pady=y)
+        tk.Entry(self, textvariable=self.my_place).grid(column=1, row=3, padx=x, pady=y)
+        tk.Button(self, text="send", width=15, command=self.click).grid(column=0, row=4, padx=x + 5, pady=y + 5)
 
-        tk.Label(self,text = "place:").grid(column=0, row=3,padx=x,pady=y)
-        tk.Entry(self,textvariable=self.my_place).grid(column=1,row=3,padx=x,pady=y)
-        tk.Button(self,text="send",width=15,command=self.click).grid(column=0,row=4,padx=x+5,pady=y+5)
-
-    def callback(self,events):
+    def callback(self, events):
         import pandas as pd
         xl = pd.read_csv("IssueTime.csv")
         lst1 = []
@@ -88,24 +83,25 @@ class IssueRequest(Login.Page):
             self.parent.show()
         else:
             self.root.destroy()
+
+
 class App(tk.Frame):
     def __init__(self, root, *args, **kwargs):
-        tk.Frame.__init__(self,root, *args, **kwargs)
+        tk.Frame.__init__(self, root, *args, **kwargs)
 
-        login = IssueRequest(self,root,None)
+        login = IssueRequest(self, root, None)
         login.place(x=0, y=0, relwidth=1, relheight=1)
         login.show()
 
-    def add_page(self,page):
+    def add_page(self, page):
         print(type(page))
         page.place(x=0, y=0, relwidth=1, relheight=1)
 
     def show(self):
         pass
 
+
 if __name__ == '__main__':
     root = tk.Tk()
     app = App(root)
     root.mainloop()
-
-

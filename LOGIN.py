@@ -1,38 +1,38 @@
-from tkinter import *
 import tkinter as tk
+from tkinter import *
+from tkinter import messagebox
+import pandas as pd
 from PIL import Image, ImageTk
 import Funcfile
-import time
-from technician import printf
-import pandas as pd
-from pandas import ExcelWriter
-from pandas import ExcelFile
-from tkinter import messagebox, ttk
-
+import technician
+import design
 
 # form design
 # Funcfile.cal_travel_time(31.3238353,35.0711483,31.3856301,34.7637722)
-class Page(tk.Frame):
+
+
+
+# class Page(tk.Frame):
+#     def __init__(self, app, root, *args, **kwargs):
+#         tk.Frame.__init__(self, *args, borderwidth=20, **kwargs)
+#         self.app = app
+#         self.root = root
+#         self.height = None
+#         self.width = None
+#         self.title = None
+#
+#     def show(self):
+#         self.root.geometry('{}x{}'.format(self.width, self.height))
+#         self.root.title(self.title)
+#         self.lift()
+#
+#     def start(self):
+#         self.app.add_page(self)
+
+
+class LogIn(design.Page):
     def __init__(self, app, root, *args, **kwargs):
-        tk.Frame.__init__(self, *args, borderwidth=20, **kwargs)
-        self.app = app
-        self.root = root
-        self.height = None
-        self.width = None
-        self.title = None
-
-    def show(self):
-        self.root.geometry('{}x{}'.format(self.width, self.height))
-        self.root.title(self.title)
-        self.lift()
-
-    def start(self):
-        self.app.add_page(self)
-
-
-class LogIn(Page):
-    def __init__(self, app, root, *args, **kwargs):
-        Page.__init__(self, app, root, * args, **kwargs)
+        design.Page.__init__(self, app, root, * args, **kwargs)
         self.height = 650
         self.width = 500
         self.title = "System Login"
@@ -52,21 +52,15 @@ class LogIn(Page):
                        command=self.checkUser)
         place = login.place(relx=0.5, rely=0.75, anchor=CENTER)
         ############ changing the image show #########
-        # canvas = Canvas(self,width=208, height=204)#,bg='white')
-        # canvas.place(relx=0.5, rely=0.3, anchor=CENTER)
-        # img = PhotoImage(file="images.png")
-        # canvas.create_image(10, 5, image=img, anchor=NW)
-        ########another way of showing the image #########
-        # self.pack(fill=BOTH, expand=1)
         load = Image.open("images.png")
         render = ImageTk.PhotoImage(load)
         img = Label(self, image=render)
         img.image = render
         img.place(relx=0.5, rely=0.3, anchor=CENTER)
 
-    # reading and checking username and password from excel file
+    # reading and checking username and password from csv file
     def connection(self, name, password):
-        df = pd.read_excel('UsersList.xlsx', 'users')
+        df = pd.read_csv("UsersList.csv")
         for i in df.index:
             if df['UserName'][i] == name:
                 if str(df['password'][i]) == password:
@@ -81,9 +75,9 @@ class LogIn(Page):
         userpassword = self.userpassword.get()
         if username == "*":
             if userpassword == "":
-                screen = Funcfile.AdminScreen(self.app,self.root)
-                screen.start()
-                screen.show()
+                adminscreen = Funcfile.AdminScreen(self.app,self.root)
+                adminscreen.start()
+                adminscreen.show()
 
 
             else:
@@ -93,7 +87,10 @@ class LogIn(Page):
             data = self.connection(username, userpassword)
             # print(data)
             if data == True:
-                Funcfile.load_tech_screen()
+                technicianscreen=technician.TechnicianScreen(self.app,self.root)
+                technicianscreen.start()
+                technicianscreen.show()
+                print("hi")
             else:
                 messagebox.showinfo(title="hello user", message="Login failed: Invalid username or password")
 

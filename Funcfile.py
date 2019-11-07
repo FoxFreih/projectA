@@ -1,10 +1,9 @@
 import tkinter as tk
-from tkinter import ttk
 from tkinter import *
 from tkinter import messagebox
+from tkinter import ttk
 import pandas as pd
-import time
-import Login
+import design
 import customer
 
 
@@ -32,10 +31,10 @@ def load_admin_screen():
     pass
 
 
-class AdminScreen(Login.Page):
+class AdminScreen(design.Page):
 
     def __init__(self, app, root, *args, **kwargs):
-        Login.Page.__init__(self, app, root, *args, **kwargs)
+        design.Page.__init__(self, app, root, *args, **kwargs)
         self.height = 250
         self.width = 600
         self.title = "Admin"
@@ -73,11 +72,11 @@ class AdminScreen(Login.Page):
         fault.show()
 
 
-class FaultScreen(Login.Page):
+class FaultScreen(design.Page):
     def __init__(self, app, root, parent, *args, **kwargs):
         x = 10
         y = 10
-        Login.Page.__init__(self, app, root, *args, **kwargs)
+        design.Page.__init__(self, app, root, *args, **kwargs)
         self.height = 250
         self.width = 350
         self.title = "AddFault"
@@ -112,11 +111,6 @@ class FaultScreen(Login.Page):
         self.parent.show()
 
 
-def load_tech_screen():
-    root1 = Tk()
-    root1.geometry("500x500")
-    root1.title("tech")
-    root1.mainloop()
 
 
 
