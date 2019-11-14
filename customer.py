@@ -12,7 +12,6 @@ def readcsv(num):
 
 
 def fillcombobox():
-    import pandas as pd
     xl = pd.read_csv("IssueTime.csv")
     lst = []
     for i in range(1, len(xl['product'])):
