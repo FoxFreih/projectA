@@ -6,7 +6,15 @@ import pandas as pd
 import design
 import customer
 
-
+def addresTocoordinates(address):
+    try:
+        from geopy import Nominatim
+        geolocator = Nominatim(user_agent="my-application",timeout=10,)
+        location = geolocator.geocode(address)
+        return location.latitude,location.longitude
+    except :
+        return -1,-1
+    
 def cal_travel_time(x1, y1, x2, y2):
     import math
     speed = 30000
