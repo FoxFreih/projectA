@@ -60,8 +60,9 @@ class TechnicianScreen(design.Page):
         self.grid_columnconfigure(0, weight =1)
         self.grid_rowconfigure(0, weight =1)
         cols = pd.read_csv("customerissue.csv")
+        Cols=cols[['product','issue','place','time']]
         row_count = sum(1 for row in cols)
-        self.data = [cols.iloc[i] for i in range(row_count)]
+        self.data = [Cols.iloc[i] for i in range(row_count)]
         #return cols.iloc[num]
         #self.data = [[f"Row {r} Column {c}" for c in range(5)] for r in range(5)]
         self.sdem = Sheet(self,
@@ -72,7 +73,7 @@ class TechnicianScreen(design.Page):
                           column_width = 150,
                           row_index_width = 50,
                           data_reference = self.data,
-                          headers=["Product","IssueDescription","Location","Time","LOL"])
+                          headers=["Product","IssueDescription","Location","Time"])
         self.sdem.enable_bindings(("single",
                                    "drag_select",
                                    "column_drag_and_drop",
