@@ -58,25 +58,29 @@ class TechnicianScreen(design.Page):
         design.Page.__init__(self, app, root, * args, **kwargs)
         self.height = 600
         self.width = 1050
+        self.status = []
         self.title = "Technician schedule"
         self.grid_columnconfigure(0, weight =1)
         self.grid_rowconfigure(0, weight =1)
-        cols = pd.read_csv("shibuts.csv")
-        Cols=cols[["product","issue","location","time","critical/notCritical"]]
-        row_count = len(cols)
-        print(row_count)
-        self.data = [Cols.iloc[i] for i in range(row_count)]
+        #self.configure(bg="white")
+        self.cols = pd.read_csv("shibuts.csv")
+        self.Cols=self.cols[["product","issue","location","time","critical/notCritical"]]
+        self.row_count = len(self.cols)
+        #print(self.row_count)
+        self.data = [self.Cols.iloc[i] for i in range(self.row_count)]
         labelTop = tk.Label(self,
                             text="Issue status",font=('Times New Roman', 14))
         labelTop.grid(column=0, row=0)
         labelTop.place(relx=0.830, rely=0.075)
-        for i in range(row_count):
-            self.comboExample = ttk.Combobox(self,
+        for i in range(self.row_count):
+            self.var = tk.StringVar()
+            self.comboExample = ttk.Combobox(self,textvariable=self.var,
                                     values=[
                                         "treated",
                                         "not treated",
                                         "becomes normal"])
-            self.comboExample.grid(column=0, row=1)
+            self.status.append(self.var)
+            self.comboExample.grid(column=0, row=i+1)
             self.comboExample.place(relx=0.830, rely=0.120+(i*0.04), relheight=0.04
                               , relwidth=0.140)
             self.comboExample.current(0)
@@ -110,8 +114,13 @@ class TechnicianScreen(design.Page):
         self.sdem.highlight_cells(row = 0, column = 0, bg = "orange", fg = "blue")
         self.sdem.highlight_cells(row = 0, bg = "orange", fg = "blue", canvas = "row_index")
         self.sdem.highlight_cells(column = 0, bg = "orange", fg = "blue", canvas = "header")
-        self.send= Button(self, text="submit", font=('Times New Roman', 14), bg='green', fg='white', padx=5,
-                       command=self.save).place(relx=0.5, rely=0.5, anchor=CENTER)
+        self.send= Button(self, text="send", font=('Times New Roman', 15), bg='orange', fg='blue', padx=5,
+                       command=self.save).place(relx=0.880, rely=0.85)
     def save(self):
-        print(self.sdem.add_row_selection(1))
-        self.sdem.anything_selected()
+        for i in range(self.row_count):
+            if self.status[i].get() == "treated":
+                self.cols.drop(i,inplace=True)
+            if self.status[i].get() == "becomes normal":
+                print("hey3")
+        self.cols.to_csv('shibuts.csv', mode='w', index=False, header=["id","product","issue","location","time","critical/notCritical"])
+
