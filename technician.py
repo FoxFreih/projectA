@@ -74,16 +74,24 @@ class TechnicianScreen(design.Page):
         labelTop.place(relx=0.830, rely=0.075)
         for i in range(self.row_count):
             self.var = tk.StringVar()
-            self.comboExample = ttk.Combobox(self,textvariable=self.var,
+            if self.cols.iloc[i,5]=="**":
+
+                self.comboExample = ttk.Combobox(self,textvariable=self.var,
                                     values=[
                                         "treated",
                                         "not treated",
                                         "becomes normal"])
+            if self.cols.iloc[i, 5] == "*":
+                self.comboExample = ttk.Combobox(self, textvariable=self.var,
+                                                 values=[
+                                                     "treated",
+                                                     "not treated"])
+
             self.status.append(self.var)
             self.comboExample.grid(column=0, row=i+1)
             self.comboExample.place(relx=0.830, rely=0.120+(i*0.04), relheight=0.04
                               , relwidth=0.140)
-            self.comboExample.current(0)
+            self.comboExample.current(1)
         self.sdem = Sheet(self,
                           align = "w",
                           header_align = "center",
@@ -121,6 +129,6 @@ class TechnicianScreen(design.Page):
             if self.status[i].get() == "treated":
                 self.cols.drop(i,inplace=True)
             if self.status[i].get() == "becomes normal":
-                print("hey3")
+                self.cols.iat[i,5]="*"
         self.cols.to_csv('shibuts.csv', mode='w', index=False, header=["id","product","issue","location","time","critical/notCritical"])
 
