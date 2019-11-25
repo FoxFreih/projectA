@@ -28,13 +28,6 @@ def Shibuts():
     messagebox.showinfo(title="ok", message="shibuts is ok")
     print("Hello")
 
-def addProduct():
-    pass
-
-
-
-
-
 def load_admin_screen():
     pass
 
@@ -59,12 +52,15 @@ class AdminScreen(design.Page):
         AddFault.place(relx=0.25, rely=0.45, anchor=CENTER)
         AddProduct = Button(self, text="AddProduct", font=('Times New Roman', 14), bg='goldenrod', fg='white',
                             padx=10,
-                            command=addProduct)
-        AddProduct.place(relx=0.8, rely=0.45, anchor=CENTER)
+                            command=self.addProduct)
+        AddProduct.place(relx=0.83, rely=0.45, anchor=CENTER)
+
+    def addProduct(self):
+        product = ProductScreen(self.app, self.root, self)
+        product.start()
+        product.show()
 
 
-    def click(self):
-        pass
 
     def addIssueRequest(self):
         cus=customer.IssueRequest(self.app,self.root,self)
@@ -73,9 +69,6 @@ class AdminScreen(design.Page):
 
     def addFault(self):
         fault  = FaultScreen(self.app,self.root,self)
-        print(type(self))
-        print(type(self.root))
-        print(type(self.app))
         fault.start()
         fault.show()
 
@@ -117,6 +110,33 @@ class FaultScreen(design.Page):
         df.to_csv('IssueTime.csv', mode='a', index=False,header=0)
         self.destroy()
         self.parent.show()
+
+
+class ProductScreen(design.Page):
+    def __init__(self, app, root, parent, *args, **kwargs):
+        x = 10
+        y = 10
+        design.Page.__init__(self, app, root, *args, **kwargs)
+        self.height = 200
+        self.width = 300
+        self.title = "AddFault"
+        self.configure(bg="white")
+        self.parent = parent
+        self.product = tk.StringVar()
+        tk.Label(self, text="product:",font=('Times New Roman', 14),bg="white").grid(row=2,column=0)
+        tk.Entry(self, textvariable=self.product).grid(row=2,column=2)
+        button=tk.Button(self, text="send",font=('Times New Roman', 12),fg='white', width=8, command=self.click,bg="green")#.grid(column=0, row=5, padx=x + 5, pady=y + 5)
+        button.place(relx=0.5, rely=0.5, anchor=CENTER)
+
+    def click(self):
+        Faultwrite = {"product": self.product.get()}
+        df = pd.DataFrame([Faultwrite])
+        df.to_csv('product.csv', mode='a', index=False, header=0)
+        self.destroy()
+        self.parent.show()
+
+
+
 
 
 

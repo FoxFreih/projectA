@@ -45,13 +45,13 @@ class LogIn(design.Page):
         form = Frame(self)
         form.pack(side=LEFT)
         form.configure(bg='white')
-        name1 = Label(form, text="Username:", font=('Times New Roman', 20), bg='white', bd=30).grid(row=1, sticky=W)
-        password1 = Label(form, text="password:", font=('Times New Roman', 20), bg='white', bd=30).grid(row=2, sticky=W)
-        name2 = Entry(form, textvariable=self.username).grid(row=1, column=2)
-        password2 = Entry(form, textvariable=self.userpassword, show=("*")).grid(row=2, column=2)
+        Label(form, text="Username:", font=('Times New Roman', 20), bg='white', bd=30).grid(row=1, sticky=W)
+        Label(form, text="password:", font=('Times New Roman', 20), bg='white', bd=30).grid(row=2, sticky=W)
+        Entry(form, textvariable=self.username).grid(row=1, column=2)
+        Entry(form, textvariable=self.userpassword, show=("*")).grid(row=2, column=2)
         login = Button(self, text="Login", font=('Times New Roman', 14), bg='green', fg='white', padx=10,
                        command=self.checkUser)
-        place = login.place(relx=0.5, rely=0.75, anchor=CENTER)
+        login.place(relx=0.5, rely=0.75, anchor=CENTER)
         ############ changing the image show #########
         load = Image.open("images.png")
         render = ImageTk.PhotoImage(load)
