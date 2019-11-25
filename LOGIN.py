@@ -30,6 +30,7 @@ import design
 #         self.app.add_page(self)
 
 
+
 class LogIn(design.Page):
     def __init__(self, app, root, *args, **kwargs):
         design.Page.__init__(self, app, root, * args, **kwargs)
@@ -69,6 +70,14 @@ class LogIn(design.Page):
                     return False
         return False
 
+    def findId(self,username, userpassword):
+        df = pd.read_csv("UsersList.csv")
+        for i in df.index:
+            if df['UserName'][i] == username:
+                if str(df['password'][i]) == userpassword:
+                    print(str(df["ID"][i]))
+                    return str(df["ID"][i])
+
     # checking the user details , printing a message according to the function result
     def checkUser(self):
         username = self.username.get()
@@ -87,7 +96,8 @@ class LogIn(design.Page):
             data = self.connection(username, userpassword)
             # print(data)
             if data == True:
-                technicianscreen=technician.TechnicianScreen(self.app,self.root)
+                self.id=self.findId(username, userpassword)
+                technicianscreen=technician.TechnicianScreen(self.app,self.root,self.id)
                 technicianscreen.start()
                 technicianscreen.show()
                 print("hi")

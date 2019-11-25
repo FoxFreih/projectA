@@ -54,7 +54,7 @@ from tkinter import ttk
 
 
 class TechnicianScreen(design.Page):
-    def __init__(self, app, root, *args, **kwargs):
+    def __init__(self, app, root,id, *args, **kwargs):
         design.Page.__init__(self, app, root, * args, **kwargs)
         self.height = 600
         self.width = 1050
@@ -64,6 +64,7 @@ class TechnicianScreen(design.Page):
         self.grid_rowconfigure(0, weight =1)
         #self.configure(bg="white")
         self.cols = pd.read_csv("shibuts.csv")
+        self.cols=self.cols.loc[self.cols.ID == id, :]
         self.Cols=self.cols[["product","issue","location","time","critical/notCritical"]]
         self.row_count = len(self.cols)
         #print(self.row_count)
