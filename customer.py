@@ -3,6 +3,7 @@ import tkinter as tk
 from tkinter import ttk
 import pandas as pd
 import design
+
 # reading single line from csv file
 def readcsv(num):
     # openning file out of the function
@@ -67,14 +68,12 @@ class IssueRequest(design.Page):
         compo2.grid(column=1, row=2, padx=x, pady=y)
 
     def click(self):
-        from Funcfile import addresTocoordinates
         customerIssue = {"name": self.name.get(),
                          "product": self.product.get(),
                          "issue": self.issue.get(),
                          "place": self.my_place.get(),
                          "time": time.asctime(),
-                         "taken": 0,
-                         "coordinate":addresTocoordinates(self.my_place.get())}
+                         "taken": 0}
         df = pd.DataFrame([customerIssue])
         df.to_csv('customerissue.csv', mode='a', index=False, header=0)
 
