@@ -129,9 +129,13 @@ class ProductScreen(design.Page):
         button.place(relx=0.5, rely=0.5, anchor=CENTER)
 
     def click(self):
-        Faultwrite = {"product": self.product.get()}
-        df = pd.DataFrame([Faultwrite])
-        df.to_csv('product.csv', mode='a', index=False, header=0)
+        addProduct = {"product": self.product.get()}
+        df = pd.DataFrame([addProduct])
+        cols = pd.read_csv("product.csv")
+        #add product to the product csv file only if the product didnt exsists in the file
+        cols = cols.loc[cols.productName == self.product.get(), :]
+        if len(cols)==0:
+            df.to_csv('product.csv', mode='a', index=False, header=0)
         self.destroy()
         self.parent.show()
 
