@@ -1,4 +1,4 @@
-id,product,issue,location,time,critical/notCritical
-145,laptop,no internet,rahat,01:00,*
-179,freezer, Lots of freezer ice buildup,rahat,00:30,*
-179,freezer, Lots of freezer ice buildup,rahat,00:45,**
+ID,product,issue,location,time,critical/notCritical
+a123,laptop,no internet,rahat,01:00,*
+a123,freezer, Lots of freezer ice buildup,rahat,00:30,*
+b123,freezer, Lots of freezer ice buildup,rahat,00:45,**

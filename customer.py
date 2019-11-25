@@ -11,11 +11,11 @@ def readcsv(num):
 
 
 def fillcombobox():
-    xl = pd.read_csv("IssueTime.csv")
+    xl = pd.read_csv("product.csv")
     lst = []
-    for i in range(1, len(xl['product'])):
-        if not (xl['product'][i] in lst):
-            lst.append(xl['product'][i])
+    for i in range(len(xl)):
+        if not (xl['productName'][i] in lst):
+            lst.append(xl['productName'][i])
     return lst
 
 
