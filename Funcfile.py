@@ -5,24 +5,20 @@ from tkinter import ttk
 import pandas as pd
 import design
 import customer
-
+import time
 def addresTocoordinates(address):
     try:
         from geopy import Nominatim
-        geolocator = Nominatim(user_agent="my-application",timeout=10,)
+        geolocator = Nominatim(user_agent="my-application",timeout=20)
         location = geolocator.geocode(address)
-        return location.latitude,location.longitude
+        return [location.latitude,location.longitude]
     except :
-        return -1,-1
+        return [-1,-1]
     
-def cal_travel_time(x1, y1, x2, y2):
-    import math
-    speed = 30000
-    a = x2 - x1
-    b = y2 - y1
-    distance = math.sqrt(a * a + b * b)
-    time = distance / speed
-    return time
+def cal_travel_time(source, dest):
+    from geopy.distance import geodesic
+    distance=geodesic(source,dest).kilometers
+    return distance/30
 
 def Shibuts():
     messagebox.showinfo(title="ok", message="shibuts is ok")
@@ -117,8 +113,4 @@ class FaultScreen(design.Page):
         df.to_csv('IssueTime.csv', mode='a', index=False,header=0)
         self.destroy()
         self.parent.show()
-
-
-
-
 
