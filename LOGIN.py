@@ -3,6 +3,7 @@ from tkinter import *
 from tkinter import messagebox
 import pandas as pd
 from PIL import Image, ImageTk
+import Funcfile
 import technician
 import design
 import Funcfile
@@ -60,12 +61,10 @@ class LogIn(design.Page):
 
     # reading and checking username and password from csv file
     def connection(self, name, password):
-        from M7mood import shibuts
         df = pd.read_csv("UsersList.csv")
         for i in df.index:
             if df['UserName'][i] == name:
                 if str(df['password'][i]) == password:
-                    shibuts(df["ID"][i])
                     return True
                 else:
                     return False
