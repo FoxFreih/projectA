@@ -18,7 +18,7 @@ def addresTocoordinates(address):
 def cal_travel_time(source, dest):
     from geopy.distance import geodesic
     distance=geodesic(source,dest).kilometers
-    return distance/30
+    return (distance/30)*60
 
 def Shibuts():
     messagebox.showinfo(title="ok", message="shibuts is ok")
@@ -115,7 +115,7 @@ class FaultScreen(design.Page):
                          "time": self.time.get(),
                          "IssueLevel":self.IssueLevel.get()}
         df = pd.DataFrame([Faultwrite])
-        df.to_csv('IssueTime.csv', mode='a', index=False,header=0)
+        df.to_csv('IssueTime.csv', mode='a', index=False, header=0)
         self.destroy()
         self.parent.show()
 class ProductScreen(design.Page):
@@ -145,3 +145,6 @@ class ProductScreen(design.Page):
         self.destroy()
         self.parent.show()
 
+src=[31.3932933, 34.7547693]
+dest=[31.2525238, 34.7905787]
+print(cal_travel_time(src,dest))

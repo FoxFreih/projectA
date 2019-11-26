@@ -1,3 +1,1 @@
-techID,customerName,product,issue,location,issueTime,crit,
-c123,yehya,freezer,Lots of freezer ice buildup,Beer Sheva,*
-c123,yehya,freezer,Lots of freezer ice buildup,Beer Sheva,*
+techID,customerName,product,issue,location,issueTime,crit,issueID

@@ -4,10 +4,12 @@ from tkinter import ttk
 import pandas as pd
 import design
 def genID():
-    cols = pd.read_csv("customerissues.csv")
-    id= cols.iloc[-1]
-  #  print(id)
-    return str(int(16)+1)
+    cols = pd.read_csv("customerissue.csv")
+    try:
+        id = cols.iloc[-1]
+        return str(int(id["ID"])+1)
+    except IndexError:
+        return 0
 # reading single line from csv file
 def readcsv(num):
     # openning file out of the function
@@ -73,13 +75,17 @@ class IssueRequest(design.Page):
 
     def click(self):
         from Funcfile import  addresTocoordinates
+        while True:
+            cord=addresTocoordinates(self.my_place.get())
+            if cord[0] != -1:
+                break
         customerIssue = {"name": self.name.get(),
                          "product": self.product.get(),
                          "issue": self.issue.get(),
                          "place": self.my_place.get(),
                          "time": time.asctime(),
                          "taken": 0,
-                         "coordinate": addresTocoordinates(self.my_place.get()),
+                         "coordinate": cord,
                          "ciID":genID()}
         df = pd.DataFrame([customerIssue])
         df.to_csv('customerissue.csv', mode='a', index=False, header=0)
