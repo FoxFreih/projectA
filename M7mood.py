@@ -27,7 +27,7 @@ def writetocsv(techID,line):
     #product,issue,location,issueTime,crit
     level=findcrit(line[1],line[2])
 
-    newline={"techID":techID,
+    newline={"ID":techID,
              "customerName":line[0],
              "product":line[1],
              "issue":line[2],

@@ -1,18 +1,18 @@
 name,product,issue,place,time,taken,coordinate,ID
-mahmoud,freezer,Lots of freezer ice buildup,rahat,Tue Nov 26 02:06:12 2019,0,"[31.3932944, 34.7547693]",1
-mahmoud,freezer,Lots of freezer ice buildup,rahat,Tue Nov 26 02:06:12 2019,0,"[31.3932955, 34.7547693]",2
-yehya,freezer,Lots of freezer ice buildup,beer sheva,Tue Nov 26 02:06:50 2019,0,"[31.2525266, 34.7905787]",5
-yehya,freezer,Lots of freezer ice buildup,beer sheva,Tue Nov 26 02:06:50 2019,0,"[31.2525277, 34.7905787]",6
-mahmoud,freezer,Lots of freezer ice buildup,rahat,Tue Nov 26 02:06:12 2019,0,"[31.3932988, 34.7547693]",9
-mahmoud,freezer,Lots of freezer ice buildup,rahat,Tue Nov 26 02:06:12 2019,0,"[31.3932977, 34.7547693]",10
-mahmoud,freezer,Lots of freezer ice buildup,rahat,Tue Nov 26 02:06:12 2019,0,"[31.3932966, 34.7547693]",11
-mahmoud,freezer,Lots of freezer ice buildup,rahat,Tue Nov 26 02:06:12 2019,0,"[31.3932955, 34.7547693]",12
-yehya,freezer,Lots of freezer ice buildup,beer sheva,Tue Nov 26 02:06:50 2019,0,"[31.2525244, 34.7905787]",13
-yehya,freezer,Lots of freezer ice buildup,beer sheva,Tue Nov 26 02:06:50 2019,0,"[31.2525233, 34.7905787]",14
-yehya,freezer,Lots of freezer ice buildup,beer sheva,Tue Nov 26 02:06:50 2019,0,"[31.2525222, 34.7905787]",15
-yehya,freezer,Lots of freezer ice buildup,beer sheva,Tue Nov 26 02:06:50 2019,0,"[31.2525211, 34.7905787]",16
-mahmoud,freezer,Lots of freezer ice buildup,rahat,Tue Nov 26 02:06:12 2019,0,"[31.3932933, 34.7547693]",17
-mahmoud,freezer,Lots of freezer ice buildup,rahat,Tue Nov 26 02:06:12 2019,0,"[31.3932933, 34.7547693]",18
+mahmoud,freezer,Lots of freezer ice buildup,rahat,Tue Nov 26 02:06:12 2019,1,"[31.3932944, 34.7547693]",1
+mahmoud,freezer,Lots of freezer ice buildup,rahat,Tue Nov 26 02:06:12 2019,1,"[31.3932955, 34.7547693]",2
+yehya,freezer,Lots of freezer ice buildup,beer sheva,Tue Nov 26 02:06:50 2019,1,"[31.2525266, 34.7905787]",5
+yehya,freezer,Lots of freezer ice buildup,beer sheva,Tue Nov 26 02:06:50 2019,1,"[31.2525277, 34.7905787]",6
+mahmoud,freezer,Lots of freezer ice buildup,rahat,Tue Nov 26 02:06:12 2019,1,"[31.3932988, 34.7547693]",9
+mahmoud,freezer,Lots of freezer ice buildup,rahat,Tue Nov 26 02:06:12 2019,1,"[31.3932977, 34.7547693]",10
+mahmoud,freezer,Lots of freezer ice buildup,rahat,Tue Nov 26 02:06:12 2019,1,"[31.3932966, 34.7547693]",11
+mahmoud,freezer,Lots of freezer ice buildup,rahat,Tue Nov 26 02:06:12 2019,1,"[31.3932955, 34.7547693]",12
+yehya,freezer,Lots of freezer ice buildup,beer sheva,Tue Nov 26 02:06:50 2019,1,"[31.2525244, 34.7905787]",13
+yehya,freezer,Lots of freezer ice buildup,beer sheva,Tue Nov 26 02:06:50 2019,1,"[31.2525233, 34.7905787]",14
+yehya,freezer,Lots of freezer ice buildup,beer sheva,Tue Nov 26 02:06:50 2019,1,"[31.2525222, 34.7905787]",15
+yehya,freezer,Lots of freezer ice buildup,beer sheva,Tue Nov 26 02:06:50 2019,1,"[31.2525211, 34.7905787]",16
+mahmoud,freezer,Lots of freezer ice buildup,rahat,Tue Nov 26 02:06:12 2019,1,"[31.3932933, 34.7547693]",17
+mahmoud,freezer,Lots of freezer ice buildup,rahat,Tue Nov 26 02:06:12 2019,1,"[31.3932933, 34.7547693]",18
 mahmoud,freezer,Lots of freezer ice buildup,rahat,Tue Nov 26 02:06:12 2019,0,"[31.3932933, 34.7547693]",19
 mahmoud,freezer,Lots of freezer ice buildup,rahat,Tue Nov 26 02:06:12 2019,0,"[31.3932933, 34.7547693]",20
 yehya,freezer,Lots of freezer ice buildup,beer sheva,Tue Nov 26 02:06:50 2019,0,"[31.2525238, 34.7905787]",21

@@ -16,11 +16,11 @@ class TechnicianScreen(design.Page):
         self.grid_columnconfigure(0, weight =1)
         self.grid_rowconfigure(0, weight =1)
         #self.configure(bg="white")
-        self.cols = pd.read_csv("shibuts.csv")
+        self.cols = pd.read_csv("techissue.csv")
         self.cols=self.cols.loc[self.cols.ID == id, :]
-        self.Cols=self.cols[["product","issue","location","time","critical/notCritical"]]
+        self.Cols=self.cols[["ID","customerName","product","issue","location","crit","issueID"]]
         self.row_count = len(self.cols)
-        #print(self.row_count)
+        #print(self.row_coun t)
         self.data = [self.Cols.iloc[i] for i in range(self.row_count)]
         labelTop = tk.Label(self,
                             text="Issue status",font=('Times New Roman', 14))
@@ -54,7 +54,7 @@ class TechnicianScreen(design.Page):
                           column_width = 140,
                           row_index_width = 50,
                           data_reference = self.data,
-                          headers=["Product","IssueDescription","Location","Time","**Critical/*Normal"],
+                          headers=["ID","customerName","product","issue","location","crit","issueID"],
                           )
         self.sdem.enable_bindings(("single",
                                    "drag_select",
@@ -84,5 +84,5 @@ class TechnicianScreen(design.Page):
                 self.cols.drop(i,inplace=True)
             if self.status[i].get() == "becomes normal":
                 self.cols.iat[i,5]="*"
-        self.cols.to_csv('shibuts.csv', mode='w', index=False, header=["id","product","issue","location","time","critical/notCritical"])
+        self.cols.to_csv('techissue.csv', mode='w', index=False, header=["ID","customerName","product","issue","location","crit","issueID"])
 
