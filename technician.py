@@ -11,13 +11,14 @@ class TechnicianScreen(design.Page):
         design.Page.__init__(self, app, root, * args, **kwargs)
         self.height = 600
         self.width = 1050
+        self.id=id
         self.status = []
         self.title = "Technician schedule"
         self.grid_columnconfigure(0, weight =1)
         self.grid_rowconfigure(0, weight =1)
         #self.configure(bg="white")
         self.cols = pd.read_csv("techissue.csv")
-        self.cols=self.cols.loc[self.cols.ID == id, :]
+        self.cols=self.cols.loc[self.cols.ID == self.id, :]
         self.Cols=self.cols[["ID","customerName","product","issue","location","crit","issueID"]]
         self.row_count = len(self.cols)
         #print(self.row_coun t)
@@ -79,10 +80,23 @@ class TechnicianScreen(design.Page):
         self.send= Button(self, text="send", font=('Times New Roman', 15), bg='orange', fg='blue', padx=5,
                        command=self.save).place(relx=0.880, rely=0.85)
     def save(self):
+        self.dff=pd.read_csv("customerissue.csv")
+
+        count1 = len(self.dff)
         for i in range(self.row_count):
             if self.status[i].get() == "treated":
-                self.cols.drop(i,inplace=True)
-            if self.status[i].get() == "becomes normal":
-                self.cols.iat[i,5]="*"
-        self.cols.to_csv('techissue.csv', mode='w', index=False, header=["ID","customerName","product","issue","location","crit","issueID"])
-
+                for j in range(count1):
+                    if self.dff.iloc[j]["ID"]== self.cols.iloc[i]["issueID"]:
+                        self.dff.iat[j, 5] = "2"
+            if self.status[i].get() == "not treated":
+                for j in range(count1):
+                    if self.dff.iloc[j]["ID"] == self.cols.iloc[i]["issueID"]:
+                        self.dff.iat[j, 5] = "0"
+        self.dff.to_csv('customerissue.csv', mode='w', index=False,header=["name","product","issue","place","time","taken","coordinate","ID"])
+        self.df = pd.read_csv("techissue.csv")
+        count=len(self.df)
+        self.df = self.df.loc[self.df.ID != self.id, :]
+        self.df.to_csv('techissue.csv', mode='w', index=False, header=["ID","customerName","product","issue","location","crit","issueID"])
+        print(self.dff)
+        print(self.df)
+        print("")

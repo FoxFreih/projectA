@@ -1,15 +1,16 @@
 ID,customerName,product,issue,location,crit,issueID
-a123,mahmoud,freezer,Lots of freezer ice buildup,rahat,*,1
 b123,mahmoud,freezer,Lots of freezer ice buildup,rahat,*,2
 c123,yehya,freezer,Lots of freezer ice buildup,beer sheva,*,5
 d123,yehya,freezer,Lots of freezer ice buildup,beer sheva,*,6
-a123,mahmoud,freezer,Lots of freezer ice buildup,rahat,*,9
 b123,mahmoud,freezer,Lots of freezer ice buildup,rahat,*,10
 c123,mahmoud,freezer,Lots of freezer ice buildup,rahat,*,11
 d123,mahmoud,freezer,Lots of freezer ice buildup,rahat,*,12
-a123,yehya,freezer,Lots of freezer ice buildup,beer sheva,*,13
 b123,yehya,freezer,Lots of freezer ice buildup,beer sheva,*,14
 c123,yehya,freezer,Lots of freezer ice buildup,beer sheva,*,15
 d123,yehya,freezer,Lots of freezer ice buildup,beer sheva,*,16
-a123,mahmoud,freezer,Lots of freezer ice buildup,rahat,*,17
 b123,mahmoud,freezer,Lots of freezer ice buildup,rahat,*,18
+c123,mahmoud,freezer,Lots of freezer ice buildup,rahat,*,19
+d123,mahmoud,freezer,Lots of freezer ice buildup,rahat,*,20
+b123,yehya,freezer,Lots of freezer ice buildup,beer sheva,*,22
+c123,yehya,freezer,Lots of freezer ice buildup,beer sheva,*,23
+d123,yehya,freezer,Lots of freezer ice buildup,beer sheva,*,24

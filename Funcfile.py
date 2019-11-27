@@ -5,6 +5,7 @@ from tkinter import ttk
 import pandas as pd
 import design
 import customer
+from M7mood import shibuts
 import time
 def addresTocoordinates(address):
     try:
@@ -15,14 +16,15 @@ def addresTocoordinates(address):
     except :
         return [-1,-1]
     
-def cal_travel_time(source, dest):
-    from geopy.distance import geodesic
-    distance=geodesic(source,dest).kilometers
-    return (distance/30)*60
+# def cal_travel_time(source, dest):
+#     from geopy.distance import geodesic
+#     distance=geodesic(source,dest).kilometers
+#     return (distance/30)*60
 
 def Shibuts():
-    messagebox.showinfo(title="ok", message="shibuts is ok")
-    print("Hello")
+    # messagebox.showinfo(title="ok", message="shibuts is ok")
+    # print("Hello")
+    shibuts()
 
 def addProduct():
     pass
@@ -145,6 +147,6 @@ class ProductScreen(design.Page):
         self.destroy()
         self.parent.show()
 
-src=[31.3932933, 34.7547693]
-dest=[31.2525238, 34.7905787]
-print(cal_travel_time(src,dest))
+#src=[31.3932933, 34.7547693]
+#dest=[31.2525238, 34.7905787]
+#print(cal_travel_time(src,dest))

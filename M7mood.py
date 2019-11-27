@@ -2,8 +2,13 @@ import time
 import tkinter as tk
 from tkinter import ttk
 import pandas as pd
-from Funcfile import cal_travel_time
+#from Funcfile import cal_travel_time
 import design
+
+def cal_travel_time(source, dest):
+    from geopy.distance import geodesic
+    distance=geodesic(source,dest).kilometers
+    return (distance/30)*60
 def findcrit(product,issue):
     cols=pd.read_csv("IssueTime.csv")
     for i in range(1,len(cols)):
@@ -75,5 +80,5 @@ def shibuts():
     df.to_csv('customerissue.csv', mode='w',index=False)
     return 0
 
-shibuts()
+#shibuts()
 #print(returntime("laptop","black screen"))
